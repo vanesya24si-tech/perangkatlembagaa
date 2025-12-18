@@ -8,12 +8,24 @@
 
     {{-- === HERO SECTION === --}}
     <section class="hero d-flex align-items-center justify-content-center" data-aos="zoom-in">
-        <div>
-            <h1>Selamat Datang di Desa Rumbai</h1>
-            <p>Membangun Desa yang Maju, Transparan, dan Sejahtera</p>
-            <a href="{{ url('/about') }}" class="btn btn-light text-primary fw-bold shadow-sm">Lihat Data Warga</a>
+    <div class="text-center">
+        <h1>Selamat Datang di Desa Rumbai</h1>
+        <p>Membangun Desa yang Maju, Transparan, dan Sejahtera</p>
+
+        <div class="mt-4 d-flex justify-content-center gap-3">
+            <a href="{{ url('/about') }}"
+               class="btn btn-light text-primary fw-bold shadow-sm">
+                Lihat Data Warga
+            </a>
+
+            <a href="{{ route('login') }}"
+               class="btn btn-outline-light fw-bold shadow-sm">
+                Login
+            </a>
         </div>
-    </section>
+    </div>
+</section>
+
 
     {{-- === TENTANG DESA === --}}
     <section id="tentang" class="py-5">

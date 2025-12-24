@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class InformasiUmumController extends Controller
 {
+    public function __construct()
+    {
+        // halaman publik boleh diakses tanpa login
+        $this->middleware('auth')->except(['publik']);
+    }
+
+    // ================= ADMIN =================
+
     public function index()
     {
         $informasi = InformasiUmum::orderBy('tanggal', 'desc')->get();
@@ -20,20 +28,21 @@ class InformasiUmumController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'judul' => 'required',
-            'isi' => 'required',
+        $validated = $request->validate([
+            'judul'   => 'required|string|max:255',
+            'isi'     => 'required|string',
             'tanggal' => 'required|date',
         ]);
 
         InformasiUmum::create([
-            'judul' => $request->judul,
-            'isi' => $request->isi,
-            'tanggal' => $request->tanggal,
-            'status' => 'aktif'
+            'judul'   => $validated['judul'],
+            'isi'     => $validated['isi'],
+            'tanggal' => $validated['tanggal'],
+            'status'  => 'aktif',
         ]);
 
-        return redirect()->route('informasi_umum.index')
+        return redirect()
+            ->route('informasi_umum.index')
             ->with('success', 'Informasi berhasil ditambahkan');
     }
 
@@ -45,28 +54,33 @@ class InformasiUmumController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'judul' => 'required',
-            'isi' => 'required',
+        $validated = $request->validate([
+            'judul'   => 'required|string|max:255',
+            'isi'     => 'required|string',
             'tanggal' => 'required|date',
-            'status' => 'required'
+            'status'  => 'required|in:aktif,nonaktif',
         ]);
 
         $informasi = InformasiUmum::findOrFail($id);
-        $informasi->update($request->all());
+        $informasi->update($validated);
 
-        return redirect()->route('informasi_umum.index')
+        return redirect()
+            ->route('informasi_umum.index')
             ->with('success', 'Informasi berhasil diperbarui');
     }
 
     public function destroy($id)
     {
-        InformasiUmum::destroy($id);
-        return redirect()->route('informasi_umum.index')
+        $informasi = InformasiUmum::findOrFail($id);
+        $informasi->delete();
+
+        return redirect()
+            ->route('informasi_umum.index')
             ->with('success', 'Informasi berhasil dihapus');
     }
 
-    // untuk tampilan publik (informasi umum)
+    // ================= PUBLIK =================
+
     public function publik()
     {
         $informasi = InformasiUmum::where('status', 'aktif')

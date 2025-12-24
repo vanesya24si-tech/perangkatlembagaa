@@ -13,6 +13,9 @@ class InformasiUmum extends Model
 
     protected $primaryKey = 'informasi_id';
 
+    public $incrementing = true; // penting
+    protected $keyType = 'int';  // penting
+
     protected $fillable = [
         'judul',
         'isi',

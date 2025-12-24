@@ -1,15 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+
+// ✅ IMPORT CONTROLLER (WAJIB)
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\WargaController;
-use App\Http\Controllers\PengaduanController;
-use App\Http\Controllers\LembagaDesaController;
-use App\Http\Controllers\PerangkatDesaController;
-use App\Http\Controllers\AnggotaLembagaController;
-use App\Http\Controllers\JabatanLembagaController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InformasiUmumController;
+use App\Http\Controllers\WargaController;
+use App\Http\Controllers\PerangkatDesaController;
+use App\Http\Controllers\LembagaDesaController;
+use App\Http\Controllers\JabatanLembagaController;
+use App\Http\Controllers\AnggotaLembagaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,9 +50,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('jabatan_lembaga', JabatanLembagaController::class);
     Route::resource('anggota_lembaga', AnggotaLembagaController::class);
 
-    // ADMIN - INFORMASI UMUM
     Route::resource('informasi_umum', InformasiUmumController::class)
         ->except(['show']);
 });
-Route::resource('informasi_umum', InformasiUmumController::class)
-    ->except(['show']);

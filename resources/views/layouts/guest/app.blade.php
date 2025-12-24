@@ -110,7 +110,7 @@
       <!-- Profil -->
       <div class="col-md-4 text-center text-md-start">
         <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
-          <img src="{{ asset('images/foto-saya.jpg') }}" class="footer-photo">
+          <img src="{{ asset('assets/img/nesa.png') }}" class="footer-photo">
           <div>
             <h6 class="mb-0 fw-semibold">Vanesya Wilyan</h6>
             <small class="text-muted">Mahasiswa Sistem Informasi</small>
@@ -129,7 +129,7 @@
       <!-- Sosial Media -->
       <div class="col-md-4 text-center text-md-end">
         <div class="footer-social d-flex justify-content-center justify-content-md-end gap-3">
-          <a href="https://instagram.com/USERNAME_IG_KAMU" target="_blank" aria-label="Instagram">
+          <a href="https://instagram.com/nesyawlyz" target="_blank" aria-label="Instagram">
             <i class="fa-brands fa-instagram"></i>
           </a>
           <a href="https://www.linkedin.com/in/USERNAME_LINKEDIN_KAMU" target="_blank" aria-label="LinkedIn">

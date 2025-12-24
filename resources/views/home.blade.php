@@ -18,10 +18,13 @@
                 Lihat Data Warga
             </a>
 
-            <a href="{{ route('login') }}"
-               class="btn btn-outline-light fw-bold shadow-sm">
-                Login
-            </a>
+            @guest
+    <a href="{{ route('login') }}"
+       class="btn btn-outline-light fw-bold shadow-sm">
+        Login
+    </a>
+@endguest
+
         </div>
     </div>
 </section>
@@ -80,7 +83,7 @@
             </div>
 
             <div class="text-center mt-4">
-                <a href="{{ url('/perangkat-desa') }}" class="btn btn-primary px-4">Lihat Semua Perangkat</a>
+                <a href="{{ route('perangkat.index') }}" class="btn btn-primary px-4">Lihat Semua Perangkat</a>
             </div>
 
         </div>
@@ -111,7 +114,7 @@
             </div>
 
             <div class="text-center mt-4">
-                <a href="{{ url('/lembaga-desa') }}" class="btn btn-outline-primary px-4">Lihat Lembaga Lainnya</a>
+                <a href="{{ route('lembaga.index') }}" class="btn btn-outline-primary px-4">Lihat Lembaga Lainnya</a>
             </div>
 
         </div>

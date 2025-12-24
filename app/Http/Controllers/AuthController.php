@@ -37,8 +37,8 @@ class AuthController extends Controller
                 return redirect()->route('warga.index');
             }
 
-            // 👤 WARGA → halaman pengaduan / contact
-            return redirect()->route('contact');
+            // 👤 WARGA → LANGSUNG KE HOME
+            return redirect()->route('home');
         }
 
         return back()->withErrors([

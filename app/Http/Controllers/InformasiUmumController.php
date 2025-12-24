@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 
 class InformasiUmumController extends Controller
 {
-    public function __construct()
-    {
-        // halaman publik boleh diakses tanpa login
-        $this->middleware('auth')->except(['publik']);
-    }
-
     // ================= ADMIN =================
 
     public function index()

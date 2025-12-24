@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-// ✅ IMPORT CONTROLLER (WAJIB)
+// CONTROLLERS
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InformasiUmumController;
@@ -24,7 +24,7 @@ Route::get('/informasi-umum', [InformasiUmumController::class, 'publik'])
 
 /*
 |--------------------------------------------------------------------------
-| AUTH (GUEST)
+| AUTH (GUEST ONLY)
 |--------------------------------------------------------------------------
 */
 Route::middleware('guest')->group(function () {
@@ -37,7 +37,7 @@ Route::middleware('guest')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| AUTH (LOGIN)
+| AUTH (LOGIN REQUIRED)
 |--------------------------------------------------------------------------
 */
 Route::middleware('auth')->group(function () {

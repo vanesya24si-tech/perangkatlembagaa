@@ -1,0 +1,905 @@
+/**
+* Template Name: Kelly
+* Template URL: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/
+* Updated: Aug 07 2024 with Bootstrap v5.3.3
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+# Help: https://bootstrapmade.com/color-system/
+--------------------------------------------------------------*/
+/* Fonts */
+:root {
+  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway",  sans-serif;
+  --nav-font: "Poppins",  sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root { 
+  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #222222; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #34b7a7; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+  --nav-color: #444444;  /* The default color of the main navmenu links */
+  --nav-hover-color: #34b7a7; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #444444; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #34b7a7; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+  --background-color: #e9e8e6;
+  --surface-color: #ffffff;
+}
+
+.dark-background {
+  --background-color: #060606;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #252525;
+  --contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+/* PHP Email Form Messages
+------------------------------*/
+.php-email-form .error-message {
+  display: none;
+  background: #df1529;
+  color: #ffffff;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .sent-message {
+  display: none;
+  color: #ffffff;
+  background: #059652;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .loading {
+  display: none;
+  background: var(--surface-color);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid var(--accent-color);
+  border-top-color: var(--surface-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 15px 0;
+  transition: all 0.5s;
+  z-index: 997;
+  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo wrapper */
+.logo {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+/* Gambar logo */
+.logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Teks logo */
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0d6efd;
+  letter-spacing: 1px;
+}
+
+/* Hover effect */
+.logo:hover .logo-img {
+  transform: scale(1.05);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .logo-img {
+    height: 40px;
+  }
+  .logo-text {
+    font-size: 1.25rem;
+  }
+}
+  
+.header .header-social-links {
+  padding-right: 15px;
+}
+
+.header .header-social-links a {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  padding-left: 6px;
+  display: inline-block;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.header .header-social-links a:hover {
+  color: var(--accent-color);
+}
+
+.header .header-social-links a i {
+  line-height: 0px;
+}
+
+@media (max-width: 1200px) {
+  .header .logo {
+    order: 1;
+  }
+
+  .header .header-social-links {
+    order: 2;
+  }
+
+  .header .navmenu {
+    order: 3;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+@media (min-width: 1200px) {
+  .navmenu {
+    padding: 0;
+  }
+
+  .navmenu ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navmenu li {
+    position: relative;
+  }
+
+  .navmenu>ul>li {
+    white-space: nowrap;
+    padding: 15px 14px;
+  }
+
+  .navmenu>ul>li:last-child {
+    padding-right: 0;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-color);
+    font-size: 15px;
+    padding: 0 2px;
+    font-family: var(--nav-font);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    transition: 0.3s;
+  }
+
+  .navmenu>ul>li>a:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: var(--nav-hover-color);
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .navmenu a:hover:before,
+  .navmenu li:hover>a:before,
+  .navmenu .active:before {
+    visibility: visible;
+    width: 25px;
+  }
+
+  .navmenu li:hover>a,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-hover-color);
+  }
+
+  .navmenu .dropdown ul {
+    margin: 0;
+    padding: 10px 0;
+    background: var(--nav-dropdown-background-color);
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    left: 14px;
+    top: 130%;
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 4px;
+    z-index: 99;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .navmenu .dropdown ul li {
+    min-width: 200px;
+  }
+
+  .navmenu .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    color: var(--nav-dropdown-color);
+  }
+
+  .navmenu .dropdown ul a i {
+    font-size: 12px;
+  }
+
+  .navmenu .dropdown ul a:hover,
+  .navmenu .dropdown ul .active:hover,
+  .navmenu .dropdown ul li:hover>a {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navmenu .dropdown .dropdown ul {
+    top: 0;
+    left: -90%;
+    visibility: hidden;
+  }
+
+  .navmenu .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: -100%;
+    visibility: visible;
+  }
+}
+
+/* Mobile Navigation */
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    color: var(--nav-color);
+    font-size: 28px;
+    line-height: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .navmenu {
+    padding: 0;
+    z-index: 9997;
+  }
+
+  .navmenu ul {
+    display: none;
+    list-style: none;
+    position: absolute;
+    inset: 60px 20px 20px 20px;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 6px;
+    background-color: var(--nav-mobile-background-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    box-shadow: none;
+    overflow-y: auto;
+    transition: 0.3s;
+    z-index: 9998;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-dropdown-color);
+    padding: 10px 20px;
+    font-family: var(--nav-font);
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  }
+
+  .navmenu a i:hover,
+  .navmenu a:focus i:hover {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+  }
+
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .active i,
+  .navmenu .active:focus i {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    transform: rotate(180deg);
+  }
+
+  .navmenu .dropdown ul {
+    position: static;
+    display: none;
+    z-index: 99;
+    padding: 10px 0;
+    margin: 10px 20px;
+    background-color: var(--nav-dropdown-background-color);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .navmenu .dropdown ul ul {
+    background-color: rgba(33, 37, 41, 0.1);
+  }
+
+  .navmenu .dropdown>.dropdown-active {
+    display: block;
+    background-color: rgba(33, 37, 41, 0.03);
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    color: #fff;
+    position: absolute;
+    font-size: 32px;
+    top: 15px;
+    right: 15px;
+    margin-right: 0;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active .navmenu {
+    position: fixed;
+    overflow: hidden;
+    inset: 0;
+    background: rgba(33, 37, 41, 0.8);
+    transition: 0.3s;
+  }
+
+  .mobile-nav-active .navmenu>ul {
+    display: block;
+  }
+}
+
+
+/* Pastikan header container pakai flex dan sejajar vertikal */
+#header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #222;
+}
+
+/* Navigation di tengah */
+.navmenu {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Social links kanan sejajar dengan logo */
+.header-social-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0; /* hilangkan margin bawah */
+  padding: 0;
+}
+
+/* Hilangkan padding berlebih di header */
+#header {
+  background: #fff;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+}
+/* ==== LOGO ==== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* jarak antara logo dan teks */
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 45px;           /* ukuran logo */
+  width: auto;            /* biar proporsional */
+  object-fit: contain;    /* jaga agar tidak gepeng */
+  display: block;
+}
+
+.logo-text {
+  font-size: 24px;        /* ukuran teks */
+  font-weight: 700;
+  color: #000;            /* warna teks */
+  letter-spacing: 1px;
+}
+
+.header {
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  padding: 10px 0;
+}
+
+.header .container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*--------------------------------------------------------------
+# Halaman Perangkat Desa
+--------------------------------------------------------------*/
+
+.org-chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  overflow-x: auto; /* Memastikan bisa di-scroll di HP */
+}
+
+.org-level {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Agar rapi di mobile */
+}
+
+.org-node {
+  padding: 15px;
+  position: relative;
+  min-width: 280px; /* Lebar minimum kartu */
+}
+
+.perangkat-card {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  height: 100%; /* Membuat kartu sama tinggi */
+}
+
+.perangkat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+}
+
+.perangkat-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #f0f2f5;
+  margin-bottom: 15px;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.perangkat-card .nama {
+  font-weight: 600;
+  color: var(--color-primary, #007bff);
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.perangkat-card .jabatan {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.perangkat-card hr {
+  margin: 10px 0;
+  border-top: 1px solid #eee;
+}
+
+.perangkat-card .detail {
+  font-size: 0.85rem;
+  color: #495057;
+  text-align: left;
+}
+
+.perangkat-card .detail p {
+  margin-bottom: 5px;
+}
+
+/* --- Garis Penghubung Struktur Organisasi --- */
+
+/* Garis Vertikal (atas ke bawah) */
+.connector-line-v {
+  width: 2px;
+  height: 20px;
+  background-color: #ced4da;
+  margin: 0 auto;
+}
+
+.connector-line-v-short {
+  width: 2px;
+  height: 20px;
+  background-color: #ced4da;
+  margin: 0 auto;
+}
+
+/* Garis Horizontal (kiri ke kanan) */
+.connector-line-h {
+  width: 50%; /* Sesuaikan lebar ini agar pas */
+  height: 2px;
+  background-color: #ced4da;
+  margin: 0 auto;
+}
+
+/* Grup untuk garis vertikal pendek (cabang) */
+.connector-line-v-group {
+  display: flex;
+  justify-content: space-around;
+  width: 50%; /* Lebar harus sama dengan .connector-line-h */
+  margin: 0 auto;
+}
+
+/* Media Query untuk Mobile */
+@media (max-width: 768px) {
+  .connector-line-h,
+  .connector-line-v-group {
+    width: 90%; /* Perlebar di mobile */
+  }
+
+  .org-level {
+    flex-direction: column; /* Susun kartu ke bawah di mobile */
+    align-items: center;
+  }
+  
+  .org-node {
+    width: 90%; /* Kartu jadi full width */
+  }
+
+  /* Sembunyikan garis horizontal di mobile agar tidak aneh */
+  .connector-line-h,
+  .connector-line-v-group {
+    display: none;
+  }
+
+  /* Beri jarak antar kartu di mobile */
+  .org-node:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+  .lembaga-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+  .lembaga-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .lembaga-icon {
+    font-size: 40px;
+    color: #0d6efd;
+    margin-bottom: 15px;
+  }
+
+  .lembaga-card h5 {
+    font-weight: 600;
+    color: #0d6efd;
+  }
+
+  .lembaga-card p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  .section-title {
+    font-weight: 700;
+    color: #0d6efd;
+  }
+section {
+    scroll-margin-top: 80px;
+  }
+
+  /* === HERO SECTION === */
+ /* === HERO SECTION (Full Screen & Responsive) === */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full tinggi layar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background: 
+    linear-gradient(to bottom right, rgba(13, 110, 253, 0.6), rgba(0, 0, 0, 0.7)),
+    url('https://static.republika.co.id/uploads/images/inpicture_slide/097116400-1587358182-830-556.jpg') 
+    center center / cover no-repeat;
+  background-attachment: fixed; /* Efek parallax ringan */
+  overflow: hidden;
+}
+
+/* Optional overlay lembut untuk efek elegan */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+/* Konten di atas gambar */
+.hero > div {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+}
+
+/* Judul dan teks */
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.95;
+  margin-bottom: 25px;
+}
+
+/* Tombol */
+.hero .btn {
+  padding: 12px 32px;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #0d6efd;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+  background: #0d6efd;
+  color: #fff !important;
+  transform: translateY(-3px);
+}
+
+  /* === SECTION TITLE === */
+  .section-title {
+    font-weight: 700;
+    color: #0d6efd;
+    position: relative;
+    display: inline-block;
+  }
+  .section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #0d6efd;
+    margin: 10px auto 0;
+    border-radius: 5px;
+  }
+
+  /* === INFO CARD === */
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  }
+  .info-card img {
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  /* === PENGADUAN FORM === */
+  .pengaduan-form {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  }
+   .contact-section {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 40px;
+  }
+
+  .section-title {
+    font-weight: 700;
+    color: #0d6efd;
+  }
+
+  .btn-primary {
+    background-color: #0d6efd;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #0b5ed7;
+  }
+
+  .alert {
+    border-radius: 8px;
+  }
+  
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .info-card h5 {
+    font-weight: 600;
+    color: #0d6efd;
+  }
+
+  .info-card p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  .section-title {
+    font-weight: 700;
+    color: #0d6efd;
+  }

@@ -13,7 +13,7 @@
         <p>Membangun Desa yang Maju, Transparan, dan Sejahtera</p>
 
         <div class="mt-4 d-flex justify-content-center gap-3">
-            <a href="{{ url('/about') }}"
+            <a href="{{ url('/warga') }}"
                class="btn btn-light text-primary fw-bold shadow-sm">
                 Lihat Data Warga
             </a>
@@ -157,4 +157,6 @@
 
         </div>
     </section>
+@include('layouts.guest.footer')
 @endsection
+

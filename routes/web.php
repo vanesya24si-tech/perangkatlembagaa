@@ -52,4 +52,5 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('informasi_umum', InformasiUmumController::class)
         ->except(['show']);
+        
 });

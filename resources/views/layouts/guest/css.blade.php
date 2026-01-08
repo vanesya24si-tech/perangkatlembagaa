@@ -11,3 +11,31 @@
 
 {{-- 4. Custom Main CSS (Harus Terakhir untuk override Bootstrap) --}}
 <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+
+<style>
+bg-slideshow {
+    position: fixed;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    filter: brightness(60%);
+    transition: opacity 1.2s ease-in-out;
+}
+
+/* Card animation */
+.fade-card {
+    animation: fadeIn .7s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>

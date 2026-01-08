@@ -20,13 +20,14 @@
   {{-- Custom CSS --}}
   <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" />
 
-  {{-- Tambahan CSS --}}
-  @stack('layouts.guest.css')
-
   {{-- Font Awesome --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
     .header-spacer {
       height: 75px;
     }
@@ -35,6 +36,23 @@
       .header-spacer {
         height: 65px;
       }
+    }
+
+    /* ===== BACKGROUND SLIDESHOW (LOGIN & REGISTER ONLY) ===== */
+    #bg-slideshow {
+      position: fixed;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: opacity 1s ease-in-out;
+      filter: brightness(60%);
+      z-index: 0;
+    }
+
+    header, main, footer {
+      position: relative;
+      z-index: 2;
     }
 
     /* Floating WhatsApp */
@@ -92,6 +110,11 @@
 
 <body>
 
+  {{-- BACKGROUND SLIDESHOW (KHUSUS LOGIN & REGISTER) --}}
+  @if (Route::is('login') || Route::is('register'))
+    <div id="bg-slideshow"></div>
+  @endif
+
   {{-- Header --}}
   @include('layouts.guest.header')
 
@@ -102,54 +125,7 @@
   <main id="main">
     @yield('content')
   </main>
-   {{-- FOOTER --}}
-<footer class="footer mt-5">
-  <div class="container">
-    <div class="row gy-4 align-items-center">
 
-      <!-- Profil -->
-      <div class="col-md-4 text-center text-md-start">
-        <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start">
-          <img src="{{ asset('assets/img/nesa.png') }}" class="footer-photo">
-          <div>
-            <h6 class="mb-0 fw-semibold">Vanesya Wilyan</h6>
-            <small class="text-muted">Mahasiswa Sistem Informasi</small>
-          </div>
-        </div>
-      </div>
-
-      <!-- Deskripsi -->
-      <div class="col-md-4 text-center">
-        <p class="mb-1 fw-semibold">Kontak & Media Sosial</p>
-        <small class="text-muted">
-          Terhubung untuk kolaborasi, diskusi, dan pengembangan diri
-        </small>
-      </div>
-
-      <!-- Sosial Media -->
-      <div class="col-md-4 text-center text-md-end">
-        <div class="footer-social d-flex justify-content-center justify-content-md-end gap-3">
-          <a href="https://instagram.com/nesyawlyz" target="_blank" aria-label="Instagram">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/USERNAME_LINKEDIN_KAMU" target="_blank" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-          <a href="https://wa.me/628XXXXXXXXXX" target="_blank" aria-label="WhatsApp">
-            <i class="fa-brands fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <hr class="my-4">
-
-    <div class="text-center small text-muted">
-      © {{ date('Y') }} Vanesya Wilyan • All Rights Reserved
-    </div>
-  </div>
-</footer>
 
 
   {{-- Floating WhatsApp --}}
@@ -162,7 +138,36 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
 
-  @stack('scripts')
+  {{-- BACKGROUND SLIDESHOW SCRIPT --}}
+  @if (Route::is('login') || Route::is('register'))
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const bg = document.getElementById('bg-slideshow');
+      if (!bg) return;
+
+      const images = [
+        "https://images.unsplash.com/photo-1596495577886-d920f1fb7238",
+        "https://images.unsplash.com/photo-1520975916090-3105956dac38",
+        "https://images.unsplash.com/photo-1509099836639-18ba1795216d",
+        "https://images.unsplash.com/photo-1588072432836-e10032774350"
+      ];
+
+      let i = 0;
+
+      function slideBg() {
+        bg.style.opacity = 0;
+        setTimeout(() => {
+          bg.style.backgroundImage = `url('${images[i]}')`;
+          bg.style.opacity = 1;
+          i = (i + 1) % images.length;
+        }, 800);
+      }
+
+      slideBg();
+      setInterval(slideBg, 6000);
+    });
+  </script>
+  @endif
 
 </body>
 </html>
